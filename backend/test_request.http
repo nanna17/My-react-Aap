@@ -1,0 +1,7 @@
+POST http://localhost:5000/ai/rewrite
+Content-Type: application/json
+
+{
+  "message": "I will be late for the meeting today.",
+  "tone": "apologetic"
+}
