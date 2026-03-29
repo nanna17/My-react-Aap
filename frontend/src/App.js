@@ -43,7 +43,7 @@ function App() {
 
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:5000/ai/rewrite', {
+      const response = await fetch('https://my-react-aap.vercel.app/ai/rewrite', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message, tone, type }),
@@ -113,88 +113,3 @@ function App() {
 }
 
 export default App;
-
-// import React, { useState } from 'react';
-// import './App.css';
-
-// function App() {
-//   const [message, setMessage] = useState("");
-//   const [tone, setTone] = useState("");
-//   const [type, setType] = useState("");
-//   const [rewritten, setRewritten] = useState("");
-//   const [loading, setLoading] = useState(false);
-
-//   const handleRewrite = async () => {
-//     if (!message.trim() || !type || !tone) return alert("Type message, tone!");
-//     setLoading(true);
-//     try {
-//       const response = await fetch('http://localhost:5000/ai/rewrite', {
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify({ message, tone, type }),
-//       });
-//       const data = await response.json();
-//       if (data.success) setRewritten(data.rewritten);
-//     } catch (err) {
-//       alert("check backend!");
-//     }
-//     setLoading(false);
-//   };
-
-//   return (
-//     <div className="app-wrapper">
-//       {/* 🎇 Background animated blobs 🎇 */}
-//       <div className="blob-bg">
-//         <div className="blob blob-1"></div>
-//         <div className="blob blob-2"></div>
-//         <div className="blob blob-3"></div>
-//       </div>
-
-//       <div className="container">
-//         <h1>Tone Transformer AI</h1>
-        
-//         <div className="input-section">
-//           <div className="controls">
-//             <select value={type} onChange={(e) => setType(e.target.value)}>
-//               <option value="" disabled>FORMAT CHOOSE KARO</option>
-//               <option value="email">EMAIL</option>
-//               <option value="message">MESSAGE</option>
-//             </select>
-
-//             <select value={tone} onChange={(e) => setTone(e.target.value)}>
-//               <option value="" disabled>TONE CHOOSE KARO</option>
-//               <option value="professional">PROFESSIONAL</option>
-//               <option value="friendly">FRIENDLY</option>
-//               <option value="apologetic">APOLOGETIC</option>
-//               <option value="confident">CONFIDENT</option>
-//             </select>
-//           </div>
-
-//           <textarea 
-//             value={message} 
-//             onChange={(e) => setMessage(e.target.value)}
-//             placeholder="write your rough draft here..."
-//           />
-
-//           <div className="btn-group">
-//             <button onClick={handleRewrite} disabled={loading} className="main-btn">
-//               {loading ? "Transforming..." : `Rewrite Content`}
-//             </button>
-//             <button onClick={() => {setMessage(""); setRewritten("");}} className="clear-btn">Clear</button>
-//           </div>
-//         </div>
-
-//         {rewritten && (
-//           <div className="output-section">
-//             <div className="result-box">
-//               <span className="ai-tag">AI OUTPUT</span>
-//               {rewritten}
-//             </div>
-//           </div>
-//         )}
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default App;
